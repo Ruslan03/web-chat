@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 export default function VoiceRecorder() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const [recording, setRecording] = useState(false)
-  const [audioURL, setAudioURL] = useState<string | null>(null)
+  // const [audioURL, setAudioURL] = useState<string | null>(null)
   const [uploading, setUploading] = useState(false)
 
   const handleStart = async () => {
@@ -25,7 +25,7 @@ export default function VoiceRecorder() {
       const blob = new Blob(chunks, { type: 'audio/webm' })
       const fileName = `recording-${Date.now()}.webm`
 
-      setAudioURL(URL.createObjectURL(blob))
+      // setAudioURL(URL.createObjectURL(blob))
       setUploading(true)
 
       const { error, data } = await supabase.storage
