@@ -12,7 +12,7 @@ import { useState } from "react";
 import AgoraRTC, { AgoraRTCProvider } from "agora-rtc-react";
 
 
-export const AgoraVoiceCalling = () => {
+export const Page = () => {
   const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
   return(
         <AgoraRTCProvider client={client}>
@@ -87,4 +87,4 @@ const Basics = () => {
   );
 };
   
-export default AgoraVoiceCalling;
+export default Page;
