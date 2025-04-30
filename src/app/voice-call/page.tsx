@@ -1,90 +1,22 @@
-'use client'
-import {
-  LocalUser,
-  RemoteUser,
-  useIsConnected,
-  useJoin,
-  useLocalMicrophoneTrack,
-  usePublish,
-  useRemoteUsers,
-} from "agora-rtc-react";
-import { useState } from "react";
-import AgoraRTC, { AgoraRTCProvider } from "agora-rtc-react";
+"use client"
 
+import React, { useState } from 'react'
+import VoiceCallRoom from './components/voice-call-room'
+import { Button } from '@/components/ui/button'
 
-export const Page = () => {
-  const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
-  return(
-        <AgoraRTCProvider client={client}>
-          <Basics />
-        </AgoraRTCProvider>
-  );
+const Page = () => {
+  const [isStart, setIsStart] = useState(false)
+  return (
+    <div>
+
+      <Button onClick={() => setIsStart(true)}>Mulai Voice Call</Button>
+
+      {isStart && (
+
+      <VoiceCallRoom />
+      )}
+    </div>
+  )
 }
 
-const Basics = () => {
-  const [calling, setCalling] = useState(false);
-  const isConnected = useIsConnected(); // Store the user's connection status
-  const appId = '2149f9f1dca9418fa37bc97a359bd711'
-  const channel = 'voice-room-channel';
-  const token = null;
-  const [micOn, setMic] = useState(true);
-
-  const { localMicrophoneTrack } = useLocalMicrophoneTrack(micOn);
-  
-  useJoin({appid: appId, channel: channel, token: token ? token : null}, calling);
-  usePublish([localMicrophoneTrack]);
-
-  const remoteUsers = useRemoteUsers();
-
-  return (
-    <>
-      <div>
-        {isConnected ? (
-          <div>
-            <div>
-              <LocalUser
-                audioTrack={localMicrophoneTrack}
-                playAudio={false} // Plays the local user's audio track. You use this to test your mic before joining a channel.
-                micOn={micOn}
-              >
-                <samp>You</samp>
-              </LocalUser>
-            </div>
-            {remoteUsers.map((user) => (
-              <div key={user.uid}>
-                <RemoteUser user={user}>
-                  <samp>{user.uid}</samp>
-                </RemoteUser>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div>
-            <button
-              disabled={!appId || !channel}
-              onClick={() => setCalling(true)}
-            >
-              <span>Mulai Voice Call</span>
-            </button>
-          </div>
-        )}
-      </div>
-      {isConnected && (
-        <div style={{padding: "20px"}}>
-          <div>
-            <button onClick={() => setMic(a => !a)}>
-              {micOn ? "Disable mic" : "Enable mic" }
-            </button>
-            <button
-              onClick={() => setCalling(a => !a)}
-              >
-              {calling ? "End calling" : "Start calling"}
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
-  
-export default Page;
+export default Page
