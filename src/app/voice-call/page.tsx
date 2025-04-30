@@ -11,16 +11,16 @@ const VoiceCallRoom = dynamic(() => import('./components/voice-call-room'), {
 
 const Page = () => {
   const [isStart, setIsStart] = useState(false)
-  const logedName = localStorage.getItem('username')
+  const username = typeof localStorage !== 'undefined' && localStorage.getItem('username')
   return (
     <div className='flex items-center justify-center h-full'>
       {!isStart && (
         <Button onClick={() => setIsStart(true)}>Mulai Panggilan Suara</Button>
       )}
 
-      {isStart && logedName && (
+      {isStart && username && (
         <Suspense fallback={'loading...'}>
-          <VoiceCallRoom userName={logedName} />
+          <VoiceCallRoom userName={username} />
         </Suspense>
       )}
     </div>
