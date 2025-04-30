@@ -17,7 +17,7 @@ export default function RootLayout({
       <body
         className={` antialiased`}
       >
-        <div className="w-full lg:w-[730px] mx-auto h-screen">
+        <div className="w-full lg:w-[730px] mx-auto h-screen relative bg-gray-100">
           {children}
         </div>
       </body>
