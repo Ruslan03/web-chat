@@ -54,7 +54,7 @@ const Basics = ({ userName, onClose }: { userName: string, onClose: VoidFunction
             {isConnected ? (
                 <div className="grid grid-cols-2 gap-3 w-full p-3">
 
-                    <div className="h-64 shadow-accent rounded-lg bg-gray-200">
+                    <div className="h-52 shadow-accent rounded-lg bg-gray-200">
                         <LocalUser
                             audioTrack={localMicrophoneTrack}
                             playAudio={false} // Plays the local user's audio track. You use this to test your mic before joining a channel.
