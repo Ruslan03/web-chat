@@ -1,8 +1,13 @@
 "use client"
 
-import React, { useState } from 'react'
-import VoiceCallRoom from './components/voice-call-room'
+import React, { Suspense, useState } from 'react'
 import { Button } from '@/components/ui/button'
+
+import dynamic from 'next/dynamic'
+
+const VoiceCallRoom = dynamic(() => import('./components/voice-call-room'), {
+  ssr: false,
+})
 
 const Page = () => {
   const [isStart, setIsStart] = useState(false)
@@ -12,8 +17,10 @@ const Page = () => {
       <Button onClick={() => setIsStart(true)}>Mulai Voice Call</Button>
 
       {isStart && (
+        <Suspense fallback={'loading...'}>
 
-      <VoiceCallRoom />
+          <VoiceCallRoom />
+        </Suspense>
       )}
     </div>
   )
