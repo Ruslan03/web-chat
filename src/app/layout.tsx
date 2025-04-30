@@ -14,9 +14,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <script src="https://cdn.agora.io/sdk/web/AgoraRTCSDK-4.4.0.js"></script>
-      </head>
       <body
         className={` antialiased`}
       >
