@@ -31,7 +31,7 @@ const Basics = () => {
 
   const { localMicrophoneTrack } = useLocalMicrophoneTrack(micOn);
   
-  useJoin({appid: appId, channel: 'voice-room', token: token ? token : null}, calling);
+  useJoin({appid: appId, channel: channel, token: token ? token : null}, calling);
   usePublish([localMicrophoneTrack]);
 
   const remoteUsers = useRemoteUsers();
@@ -60,7 +60,12 @@ const Basics = () => {
           </div>
         ) : (
           <div>
-            <p>Coneecting...</p>
+            <button
+              disabled={!appId || !channel}
+              onClick={() => setCalling(true)}
+            >
+              <span>Mulai Voice Call</span>
+            </button>
           </div>
         )}
       </div>
