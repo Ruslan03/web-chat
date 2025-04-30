@@ -11,7 +11,7 @@ import {
 } from "agora-rtc-react";
 import { useState } from "react";
 import AgoraRTC, { AgoraRTCProvider } from "agora-rtc-react";
-import { decryptUIDToName, encryptNameToUID } from "@/lib/encryptName";
+import {  encryptNameToUID } from "@/lib/encryptName";
 
 
 const VoiceCallRoom = ({ userName }: { userName: string }) => {
@@ -35,7 +35,9 @@ const Basics = ({ userName }: { userName: string }) => {
 
     const uid = encryptNameToUID(userName)
 
-    useJoin({ appid: appId, channel: channel, token: token ? token : null, uid }, calling);
+    console.log(uid)
+
+    useJoin({ appid: appId, channel: channel, token: token ? token : null }, calling);
     usePublish([localMicrophoneTrack]);
 
     const remoteUsers = useRemoteUsers();
@@ -56,7 +58,8 @@ const Basics = ({ userName }: { userName: string }) => {
                         </div>
                         {remoteUsers.map((user) => (
                             <div key={user.uid}>
-                                <p>{decryptUIDToName(user.uid as string)}</p>
+                                {/* <p>{decryptUIDToName(user.uid as string)}</p> */}
+                                <p>{user.uid}</p>
                                 {/* <RemoteUser user={user}>
                 </RemoteUser> */}
                             </div>

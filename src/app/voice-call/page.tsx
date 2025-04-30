@@ -12,6 +12,7 @@ const VoiceCallRoom = dynamic(() => import('./components/voice-call-room'), {
 const Page = () => {
   const [isStart, setIsStart] = useState(false)
   const username = typeof localStorage !== 'undefined' && localStorage.getItem('username')
+  
   return (
     <div className='flex items-center justify-center h-full'>
       {!isStart && (
