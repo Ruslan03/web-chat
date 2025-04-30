@@ -62,8 +62,6 @@ const Basics = ({ userName, onClose }: { userName: string, onClose: VoidFunction
                             style={{ backgroundColor: 'unset', height:'216px' }}
                         >
                             <div className="h-full w-full flex flex-col items-center justify-around">
-
-                                <p>You</p>
                                 <div className="h-20 w-20 rounded-full bg-zinc-300 flex items-center justify-center">
                                     <p className="font-bold text-2xl">{userName?.charAt(0).toUpperCase()}</p>
                                 </div>
