@@ -52,7 +52,7 @@ const Basics = ({ userName, onClose }: { userName: string, onClose: VoidFunction
         <div className="w-full h-full flex flex-col">
             <ChatHeader title="Panggilan Suara" hideVoiceCallButton={true} />
             {isConnected ? (
-                <div className="grid grid-cols-3 gap-5 w-full p-5">
+                <div className="grid grid-cols-2 gap-3 w-full p-3">
 
                     <div className="h-64 shadow-accent rounded-lg bg-gray-200">
                         <LocalUser
@@ -78,7 +78,7 @@ const Basics = ({ userName, onClose }: { userName: string, onClose: VoidFunction
                     {remoteUsers.map((user) => {
                         const uname = decryptUIDToName(user.uid as string)
                         return (
-                            <div key={user.uid} className="h-64 shadow-accent rounded-lg bg-gray-200">
+                            <div key={user.uid} className="h-52 shadow-accent rounded-lg bg-gray-200">
                                 <RemoteUser user={user} style={{ backgroundColor: 'unset', height:'216px' }}>
                                     <div  className="h-full w-full flex flex-col items-center justify-around">
 
